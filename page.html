@@ -157,6 +157,8 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             position: relative;
             overflow: hidden;
+            margin-right: 10px;
+            margin-bottom: 10px;
         }
 
         .btn:hover {
@@ -181,6 +183,10 @@
 
         .btn:hover::after {
             left: 100%;
+        }
+
+        .danger-btn {
+            background: linear-gradient(to right, var(--danger), #d1144a);
         }
 
         .results-section {
@@ -440,94 +446,94 @@
             }
         }
 
-            .app-footer {
-        background: linear-gradient(to right, var(--primary), var(--secondary));
-        color: white;
-        padding: 2rem 1.5rem;
-        margin-top: 2rem;
-    }
-
-    .footer-content {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 2rem;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    .footer-section h3 {
-        font-size: 1.2rem;
-        margin-bottom: 1rem;
-        position: relative;
-        padding-bottom: 0.5rem;
-    }
-
-    .footer-section h3::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 50px;
-        height: 2px;
-        background: rgba(255,255,255,0.3);
-    }
-
-    .footer-section p, .footer-section a {
-        color: rgba(255,255,255,0.7);
-        line-height: 1.6;
-    }
-
-    .footer-section a:hover {
-        color: white;
-        text-decoration: underline;
-    }
-
-    .footer-section ul {
-        list-style: none;
-    }
-
-    .footer-section li {
-        margin-bottom: 0.5rem;
-    }
-
-    .social-links {
-        display: flex;
-        gap: 1rem;
-        margin-top: 1rem;
-    }
-
-    .social-links a {
-        color: white;
-        font-size: 1.2rem;
-        transition: transform 0.3s;
-    }
-
-    .social-links a:hover {
-        transform: translateY(-3px);
-    }
-
-    .footer-bottom {
-        text-align: center;
-        margin-top: 2rem;
-        padding-top: 1.5rem;
-        border-top: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .footer-bottom p {
-        margin: 0;
-        color: rgba(255,255,255,0.7);
-    }
-
-    .footer-bottom strong {
-        color: white;
-        font-weight: 600;
-    }
-
-    @media (max-width: 768px) {
-        .footer-content {
-            grid-template-columns: 1fr;
+        .app-footer {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem 1.5rem;
+            margin-top: 2rem;
         }
-    }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background: rgba(255,255,255,0.3);
+        }
+
+        .footer-section p, .footer-section a {
+            color: rgba(255,255,255,0.7);
+            line-height: 1.6;
+        }
+
+        .footer-section a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-bottom p {
+            margin: 0;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .footer-bottom strong {
+            color: white;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -574,6 +580,7 @@
                 </div>
                 
                 <button id="addCourse" class="btn"><i class="fas fa-plus-circle"></i> Add Course</button>
+                <button id="clearSession" class="btn danger-btn"><i class="fas fa-trash"></i> Clear Session</button>
             </div>
             
             <div class="results-section">
@@ -721,8 +728,9 @@
                 <div class="footer-section">
                     <h3>Connect</h3>
                     <div class="social-links">
-                        <a href="https://linkedin.com/in/abdulrahman-ashraf-0xvalorian"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://github.com/Abdulrahman-Ashraf161"><i class="fab fa-github"></i></a>
+                        <a href="https://linkedin.com/in/abdulrahman-ashraf-0xvalorian" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/Abdulrahman-Ashraf161" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                        <a href="mailto:boda1a2a3a4a@gmail.com?subject=Contact%20from%20GPA%20Calculator" target="_blank" rel="noopener noreferrer"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
             </div>
@@ -741,13 +749,45 @@
         const creditHoursInput = document.getElementById('creditHours');
         const gradeInput = document.getElementById('grade');
         const addCourseBtn = document.getElementById('addCourse');
+        const clearSessionBtn = document.getElementById('clearSession');
         const coursesTable = document.getElementById('coursesTable');
         const totalPointsSpan = document.getElementById('totalPoints');
         const totalCreditHoursSpan = document.getElementById('totalCreditHours');
         const gpaSpan = document.getElementById('gpa');
         
+        // Save courses to sessionStorage
+        function saveCoursesToSession() {
+            sessionStorage.setItem('gpaCourses', JSON.stringify(courses));
+        }
+        
+        // Load courses from sessionStorage
+        function loadCoursesFromSession() {
+            const savedCourses = sessionStorage.getItem('gpaCourses');
+            if (savedCourses) {
+                courses = JSON.parse(savedCourses);
+                updateCoursesTable();
+                calculateResults();
+            }
+        }
+        
+        // Clear session data
+        function clearSessionData() {
+            if (confirm('Are you sure you want to clear all courses for this session?')) {
+                sessionStorage.removeItem('gpaCourses');
+                courses = [];
+                updateCoursesTable();
+                calculateResults();
+            }
+        }
+        
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', loadCoursesFromSession);
+        
         // Add course event listener
         addCourseBtn.addEventListener('click', addCourse);
+        
+        // Clear session event listener
+        clearSessionBtn.addEventListener('click', clearSessionData);
         
         // Function to add a new course
         function addCourse() {
@@ -781,9 +821,10 @@
                 points: points
             });
             
-            // Update the display
+            // Update the display and save to session
             updateCoursesTable();
             calculateResults();
+            saveCoursesToSession();
             
             // Clear inputs
             courseNameInput.value = '';
@@ -905,6 +946,7 @@
                     courses.splice(index, 1);
                     updateCoursesTable();
                     calculateResults();
+                    saveCoursesToSession();
                     
                     // Show removal animation
                     this.innerHTML = '<i class="fas fa-check"></i>';
