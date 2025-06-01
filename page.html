@@ -580,7 +580,7 @@
                 </div>
                 
                 <button id="addCourse" class="btn"><i class="fas fa-plus-circle"></i> Add Course</button>
-                <button id="clearSession" class="btn danger-btn"><i class="fas fa-trash"></i> Clear Session</button>
+                <button id="clearData" class="btn danger-btn"><i class="fas fa-trash-alt"></i> Clear All Data</button>
             </div>
             
             <div class="results-section">
@@ -749,20 +749,20 @@
         const creditHoursInput = document.getElementById('creditHours');
         const gradeInput = document.getElementById('grade');
         const addCourseBtn = document.getElementById('addCourse');
-        const clearSessionBtn = document.getElementById('clearSession');
+        const clearDataBtn = document.getElementById('clearData');
         const coursesTable = document.getElementById('coursesTable');
         const totalPointsSpan = document.getElementById('totalPoints');
         const totalCreditHoursSpan = document.getElementById('totalCreditHours');
         const gpaSpan = document.getElementById('gpa');
         
-        // Save courses to sessionStorage
-        function saveCoursesToSession() {
-            sessionStorage.setItem('gpaCourses', JSON.stringify(courses));
+        // Save courses to localStorage
+        function saveCourses() {
+            localStorage.setItem('gpaCourses', JSON.stringify(courses));
         }
         
-        // Load courses from sessionStorage
-        function loadCoursesFromSession() {
-            const savedCourses = sessionStorage.getItem('gpaCourses');
+        // Load courses from localStorage
+        function loadCourses() {
+            const savedCourses = localStorage.getItem('gpaCourses');
             if (savedCourses) {
                 courses = JSON.parse(savedCourses);
                 updateCoursesTable();
@@ -770,24 +770,30 @@
             }
         }
         
-        // Clear session data
-        function clearSessionData() {
-            if (confirm('Are you sure you want to clear all courses for this session?')) {
-                sessionStorage.removeItem('gpaCourses');
+        // Clear all saved data
+        function clearAllData() {
+            if (confirm('Are you sure you want to clear ALL saved data? This cannot be undone.')) {
+                localStorage.removeItem('gpaCourses');
                 courses = [];
                 updateCoursesTable();
                 calculateResults();
+                
+                // Show confirmation
+                clearDataBtn.innerHTML = '<i class="fas fa-check"></i> Cleared!';
+                setTimeout(() => {
+                    clearDataBtn.innerHTML = '<i class="fas fa-trash-alt"></i> Clear All Data';
+                }, 1500);
             }
         }
         
-        // Initialize when page loads
-        document.addEventListener('DOMContentLoaded', loadCoursesFromSession);
+        // Load saved data when page loads
+        document.addEventListener('DOMContentLoaded', loadCourses);
         
         // Add course event listener
         addCourseBtn.addEventListener('click', addCourse);
         
-        // Clear session event listener
-        clearSessionBtn.addEventListener('click', clearSessionData);
+        // Clear data button event listener
+        clearDataBtn.addEventListener('click', clearAllData);
         
         // Function to add a new course
         function addCourse() {
@@ -818,13 +824,14 @@
                 name: courseName,
                 creditHours: creditHours,
                 grade: grade,
-                points: points
+                points: points,
+                added: new Date().toISOString() // Track when added
             });
             
-            // Update the display and save to session
+            // Update the display and save data
             updateCoursesTable();
             calculateResults();
-            saveCoursesToSession();
+            saveCourses();
             
             // Clear inputs
             courseNameInput.value = '';
@@ -946,7 +953,7 @@
                     courses.splice(index, 1);
                     updateCoursesTable();
                     calculateResults();
-                    saveCoursesToSession();
+                    saveCourses();
                     
                     // Show removal animation
                     this.innerHTML = '<i class="fas fa-check"></i>';
